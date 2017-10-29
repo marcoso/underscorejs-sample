@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>            
+  </head>
+  <body>    
+    <div id="customTemplate"></div>
+    <script type="text/template" id='template_1'> 
+        <span><strong>Underscorejs templates</strong></span>    
+        <hr> 
+        <% _.each(items, function(item){ %>
+          <div>
+            <span><%=item.name%>, <%=item.value%></span>
+          </div>
+        <% }); %>      
+    </script>
+    <script type="text/javascript">
+      var compiled = _.template($("#template_1").html());      
+      var data = {
+        items :[
+        {
+            name:"Item A Name",
+            value:"Item A Value"
+        },
+        {
+            name:"Item B Name",
+            value:"Item B Value"
+        },
+        {
+            name:"Item C Name",
+            value:"Item C Value"
+        }       
+        ]
+      };
+      $("#customTemplate").html(compiled(data));
+    </script>
+  </body>
+</html>
